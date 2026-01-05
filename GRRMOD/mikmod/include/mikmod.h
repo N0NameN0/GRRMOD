@@ -74,7 +74,7 @@ extern "C" {
 
 #define LIBMIKMOD_VERSION_MAJOR 3L
 #define LIBMIKMOD_VERSION_MINOR 3L
-#define LIBMIKMOD_REVISION     12L
+#define LIBMIKMOD_REVISION     13L
 
 #define LIBMIKMOD_VERSION \
     ((LIBMIKMOD_VERSION_MAJOR<<16)| \
@@ -124,7 +124,7 @@ typedef char               CHAR;
 
 /* BOOL:  0=false, <>0 true -- 16 bits on Amiga, int-wide on others. */
 #if !(defined(_MIKMOD_OS2) || defined(_MIKMOD_WIN32) || defined(_MIKMOD_AMIGA))
-typedef unsigned int       BOOL;
+typedef int                BOOL;
 #endif
 
 /* 1 byte, signed and unsigned: */
@@ -834,6 +834,7 @@ MIKMODAPI extern struct MDRIVER drv_dc;     /* Dreamcast driver */
 MIKMODAPI extern struct MDRIVER drv_gp32;   /* GP32 Sound driver */
 MIKMODAPI extern struct MDRIVER drv_psp;    /* PlayStation Portable driver */
 MIKMODAPI extern struct MDRIVER drv_n64;    /* Nintendo64 driver */
+MIKMODAPI extern struct MDRIVER drv_vita;   /* PlayStation Vita driver */
 
 MIKMODAPI extern struct MDRIVER drv_wss;    /* DOS WSS driver */
 MIKMODAPI extern struct MDRIVER drv_sb;     /* DOS S/B driver */
