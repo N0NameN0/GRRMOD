@@ -9,28 +9,68 @@
 #include <wiiuse/wpad.h>
 
 // Image file
-#include "Impact_9_png.h"
+static const u8 Impact_9_png[] = {
+    #embed "../data/Impact_9.png"
+};
 
 // Mod file
-#include "music_mp3.h"
-#include "music_669.h"
-#include "music_amf.h"
-#include "music_asy.h"
-#include "music_dsm.h"
-#include "music_far.h"
-#include "music_gdm.h"
-#include "music_imf.h"
-#include "music_it.h"
-#include "music_med.h"
-#include "music_mod.h"
-#include "music_mtm.h"
-#include "music_okta.h"
-#include "music_s3m.h"
-#include "music_stm.h"
-#include "music_stx.h"
-#include "music_ult.h"
-#include "music_uni.h"
-#include "music_xm.h"
+static const u8 music_mp3[] = {
+    #embed "../data/music.mp3"
+};
+static const u8 music_669[] = {
+    #embed "../data/music.669"
+};
+static const u8 music_amf[] = {
+    #embed "../data/music.amf"
+};
+static const u8 music_asy[] = {
+    #embed "../data/music.asy"
+};
+static const u8 music_dsm[] = {
+    #embed "../data/music.dsm"
+};
+static const u8 music_far[] = {
+    #embed "../data/music.far"
+};
+static const u8 music_gdm[] = {
+    #embed "../data/music.gdm"
+};
+static const u8 music_imf[] = {
+    #embed "../data/music.imf"
+};
+static const u8 music_it[] = {
+    #embed "../data/music.it"
+};
+static const u8 music_med[] = {
+    #embed "../data/music.med"
+};
+static const u8 music_mod[] = {
+    #embed "../data/music.mod"
+};
+static const u8 music_mtm[] = {
+    #embed "../data/music.mtm"
+};
+static const u8 music_okta[] = {
+    #embed "../data/music.okta"
+};
+static const u8 music_s3m[] = {
+    #embed "../data/music.s3m"
+};
+static const u8 music_stm[] = {
+    #embed "../data/music.stm"
+};
+static const u8 music_stx[] = {
+    #embed "../data/music.stx"
+};
+static const u8 music_ult[] = {
+    #embed "../data/music.ult"
+};
+static const u8 music_uni[] = {
+    #embed "../data/music.uni"
+};
+static const u8 music_xm[] = {
+    #embed "../data/music.xm"
+};
 
 #define MAX_WIDTH 6.0f
 #define MIN_WIDTH 0.2f
@@ -57,25 +97,25 @@ int main(int argc, char **argv) {
     float a = 0.0f;
     s16 Volume = 255;
     s8 SongNum = 0;
-    const PLAYLIST PlayList[] = { {(u8 *)music_mp3, music_mp3_size},
-                                  {(u8 *)music_669, music_669_size},
-                                  {(u8 *)music_amf, music_amf_size},
-                                  {(u8 *)music_asy, music_asy_size},
-                                  {(u8 *)music_dsm, music_dsm_size},
-                                  {(u8 *)music_far, music_far_size},
-                                  {(u8 *)music_gdm, music_gdm_size},
-                                  {(u8 *)music_imf, music_imf_size},
-                                  {(u8 *)music_it, music_it_size},
-                                  {(u8 *)music_med, music_med_size},
-                                  {(u8 *)music_mod, music_mod_size},
-                                  {(u8 *)music_mtm, music_mtm_size},
-                                  {(u8 *)music_okta, music_okta_size},
-                                  {(u8 *)music_s3m, music_s3m_size},
-                                  {(u8 *)music_stm, music_stm_size},
-                                  {(u8 *)music_stx, music_stx_size},
-                                  {(u8 *)music_ult, music_ult_size},
-                                  {(u8 *)music_uni, music_uni_size},
-                                  {(u8 *)music_xm, music_xm_size} };
+    const PLAYLIST PlayList[] = { {(u8 *)music_mp3, sizeof(music_mp3)},
+                                  {(u8 *)music_669, sizeof(music_669)},
+                                  {(u8 *)music_amf, sizeof(music_amf)},
+                                  {(u8 *)music_asy, sizeof(music_asy)},
+                                  {(u8 *)music_dsm, sizeof(music_dsm)},
+                                  {(u8 *)music_far, sizeof(music_far)},
+                                  {(u8 *)music_gdm, sizeof(music_gdm)},
+                                  {(u8 *)music_imf, sizeof(music_imf)},
+                                  {(u8 *)music_it, sizeof(music_it)},
+                                  {(u8 *)music_med, sizeof(music_med)},
+                                  {(u8 *)music_mod, sizeof(music_mod)},
+                                  {(u8 *)music_mtm, sizeof(music_mtm)},
+                                  {(u8 *)music_okta, sizeof(music_okta)},
+                                  {(u8 *)music_s3m, sizeof(music_s3m)},
+                                  {(u8 *)music_stm, sizeof(music_stm)},
+                                  {(u8 *)music_stx, sizeof(music_stx)},
+                                  {(u8 *)music_ult, sizeof(music_ult)},
+                                  {(u8 *)music_uni, sizeof(music_uni)},
+                                  {(u8 *)music_xm, sizeof(music_xm)} };
     const u8 LastIndex = sizeof(PlayList) / sizeof(*PlayList) - 1;
     CH Channel[] = { {0, 0, 0, MIN_WIDTH},
                      {0, 0, 0, MIN_WIDTH},
@@ -97,7 +137,7 @@ int main(int argc, char **argv) {
     GRRLIB_SetBackgroundColour(0x00, 0x00, 0x00, 0xFF);
 
     // Loop forever
-    while(1) {
+    while(true) {
         GRRLIB_2dMode();
         WPAD_ScanPads();  // Scan the Wiimotes
 
