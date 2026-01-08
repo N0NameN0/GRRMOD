@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-Copyright (c) 2010-2024 The GRRLIB Team
+Copyright (c) 2010-2026 The GRRLIB Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ------------------------------------------------------------------------------*/
+// Required hack before including mikmod headers
+// This is because libogc and libmikmod both defines BOOL
+#define _MIKMOD_OS2 1
+typedef char CHAR;
+typedef unsigned long int ULONG;
 
 #include "GRRMOD_internals.h"
 #include "mikmod/include/mikmod.h"
