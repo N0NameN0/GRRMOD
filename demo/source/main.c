@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
     GRRLIB_SetBackgroundColour(0x00, 0x00, 0x00, 0xFF);
 
     // Loop forever
-    while(true) {
+    while(SYS_MainLoop()) {
         GRRLIB_2dMode();
         WPAD_ScanPads();  // Scan the Wiimotes
 
