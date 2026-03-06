@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.25)
 project(demo)
 
 include(GNUInstallDirs)
@@ -15,10 +15,6 @@ find_library(FAT fat
 )
 find_library(GRRLIB grrlib REQUIRED)
 find_library(PNGU pngu REQUIRED)
-
-file(GLOB_RECURSE BIN_FILES
-  "${CMAKE_CURRENT_SOURCE_DIR}/data/*.*"
-)
 
 add_executable(demo)
 
@@ -39,12 +35,7 @@ target_include_directories(demo
   ${DEVKITPRO}/portlibs/${OGC_CONSOLE}/${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-dkp_add_embedded_binary_library(data
-  ${BIN_FILES}
-)
-
 target_link_libraries(demo
-  data
   ${GRRMOD_LIBRARIES}
   ${GRRLIB}
   ${PNGU}

@@ -37,7 +37,6 @@
 #endif
 
 #include <gctypes.h>
-#include <gcbool.h>
 #include "mikmod_internals.h"
 
 static int buffersize=0;
@@ -45,7 +44,7 @@ static int *audiobuffer=NULL;
 
 static BOOL WII_IsThere(void)
 {
-	return TRUE;
+	return true;
 }
 
 static int WII_Init(void)
@@ -59,12 +58,12 @@ static int WII_Init(void)
 
 static void WII_CommandLine(const CHAR *cmdline)
 {
-	CHAR *ptr=MD_GetAtom("buffer",cmdline,FALSE);
+	CHAR *ptr=MD_GetAtom("buffer",cmdline,false);
 	if (ptr) {
 		audiobuffer = (void *)atoi(ptr);
 		free(ptr);
 	}
-	ptr=MD_GetAtom("size",cmdline,FALSE);
+	ptr=MD_GetAtom("size",cmdline,false);
 	if (ptr) {
 		buffersize = atoi(ptr);
 		free(ptr);

@@ -12,11 +12,27 @@ $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>dev
 endif
 
 include $(DEVKITPPC)/base_rules
+
+ifeq ($(PLATFORM),cube)
+MACHDEP		:=	-DHW_DOL
+
+# Installation directory
+DESTDIR	:=	$(DEVKITPRO)/portlibs/gamecube
+
+LIBOGC_INC	:=	$(DEVKITPRO)/libogc/include
+LIBOGC_LIB	:=	$(DEVKITPRO)/libogc/lib/cube
+else
+MACHDEP		:=	-DHW_RVL
+
+# Installation directory
+DESTDIR	:=	$(DEVKITPRO)/portlibs/wii
+
 LIBOGC_INC	:=	$(DEVKITPRO)/libogc/include
 LIBOGC_LIB	:=	$(DEVKITPRO)/libogc/lib/wii
+endif
 
-INSTALL_INC	:=	$(DEVKITPRO)/portlibs/ppc/include
-INSTALL_LIB	:=	$(DEVKITPRO)/portlibs/ppc/lib
+INSTALL_INC	:=	$(DESTDIR)/include
+INSTALL_LIB	:=	$(DESTDIR)/lib
 
 #---------------------------------------------------------------------------------
 # options for building the library, set to yes to include, anything else to exclude
@@ -66,7 +82,7 @@ endif
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-MACHDEP		:=	-DGEKKO -mcpu=750 -meabi -msdata=eabi -mhard-float -fmodulo-sched -ffunction-sections -fdata-sections
+MACHDEP		+=	-DGEKKO -mcpu=750 -meabi -msdata=eabi -mhard-float -fmodulo-sched -ffunction-sections -fdata-sections
 CFLAGS		+=	-O2 $(MACHDEP) $(INCLUDE)
 CXXFLAGS	:=	$(CFLAGS)
 

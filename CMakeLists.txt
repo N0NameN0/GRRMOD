@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.25)
 project(grrmod VERSION 0.0.1)
 
 option(GRRMOD_INSTALL "Generate the install target" ON)
@@ -15,7 +15,8 @@ find_library(AESND aesnd
 if(GRRMOD_USE_MOD)
   file(GLOB MOD_SRC_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/GRRMOD_MOD.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/drivers/*.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/drivers/drv_nos.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/drivers/drv_wii.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/loaders/*.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/mmio/*.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/GRRMOD/mikmod/playercode/*.c"
