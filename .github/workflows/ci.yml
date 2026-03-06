@@ -24,5 +24,6 @@ jobs:
 
     - name: Build library and demo
       run: |
-        (cd GRRMOD && make && make install)
+        /opt/devkitpro/portlibs/wii/bin/powerpc-eabi-cmake -B build
+        cmake --build build --target install
         (cd demo && make)
